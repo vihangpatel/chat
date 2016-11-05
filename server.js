@@ -8,7 +8,9 @@ var appPort = 3000;
 
 // Configure the static path
 app.use(express.static(__dirname + '/app/templates'));
-app.use('/scripts', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/scripts/vendor', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/scripts/js', express.static(__dirname + '/app/js'));
+app.use('/styles/css', express.static(__dirname + '/app/css'));
 
 // Add route to the server
 app.get('/',function(req,res){
