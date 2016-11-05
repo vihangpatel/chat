@@ -22,7 +22,11 @@ app.get('/',function(req,res){
 });
 
 io.sockets.on('connection', function (socket) { // First connection
-	console.log('connection arrived')
+	console.log('connection arrived');
+
+	socket.on('message',function(data){
+		socket.broadcast.emit('message', { message : data })
+	});
 })
 
 // Listen on
