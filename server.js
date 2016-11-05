@@ -6,10 +6,13 @@ var app     = express();
 // In that case change the following variable
 var appPort = 3000;
 
+// Configure the static path
+app.use(express.static(__dirname + '/app/templates'));
+app.use('/scripts', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 // Add route to the server
 app.get('/',function(req,res){
- 	res.send('Yoooo My server worked')
+ 	res.sendFile('index.html')
 });
 
 // Listen on
