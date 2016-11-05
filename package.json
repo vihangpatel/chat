@@ -1,9 +1,8 @@
 {
-  "name": "mycode",
+  "name": "Chat Application",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "author": "",
+  "description": "Quil Labs",
+  "author": "Quil Labs",
   "license": "ISC",
   "dependencies": {
     "socket.io": "^1.5.1",
