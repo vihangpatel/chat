@@ -1,7 +1,7 @@
 $(document).ready(main);
 
+var socket;
+
 function main() {
-	console.log('Adding main file which will handle ');
-	console.warn('Warning is written this way');
-	console.info('Information is written this way');
+	socket = io.connect();
 }
