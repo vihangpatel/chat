@@ -50,7 +50,7 @@ body {
 .mid-body{
     position: relative;
     overflow: scroll;
-    min-height: 300px;
+    height: 300px;
 }
 
 .btm-bar{
@@ -100,4 +100,26 @@ body {
     line-height: 50px;
     text-align: center;
     font-weight: bold;
+}
+
+.message {
+	float: left;
+    min-width: 54%;
+    margin: 10px 0 0;
+    background: #683594;
+    color: white;
+    border-radius: 5px;
+}
+
+.my-message {
+	float: right;
+    min-width: 54%;
+    margin: 10px 0 0;
+    background: #db5b94;
+    color: white;
+    border-radius: 5px;
+}
+
+.message-text {
+	padding: 12px
 }
