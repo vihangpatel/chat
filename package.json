@@ -1,0 +1,12 @@
+{
+  "name": "mycode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.5.1",
+     "express": "^4.11.0"
+  }
+}
