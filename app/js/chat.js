@@ -6,6 +6,7 @@ function main() {
 	socket = io.connect();
 	bindIncomingMessage();
 	bindEventOnInputText();
+	bindSendClick();
 }
 
 function bindEventOnInputText(){
@@ -46,4 +47,8 @@ function sendMessage(){
 	socket.emit('message',msg);
 	addMessage({ message : msg} ,true);
 	$('.chat-input-message input').val('');
+}
+
+function bindSendClick(){
+	$('.chat-hit-enter').click(sendMessage)
 }
