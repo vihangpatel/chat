@@ -127,3 +127,28 @@ body {
 .message-text {
 	padding: 12px
 }
+
+.modal {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+}
+
+.expect-user-name {
+	text-align: center;
+    width: 30%;
+    height: 100px;
+    margin: auto;
+    background: #db5b94;
+    border-radius: 1px;
+    margin-top: 3%;
+    position: relative;
+}
+
+.expect-user-name input {
+
+}
