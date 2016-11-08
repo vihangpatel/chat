@@ -148,8 +148,18 @@ body {
     border-radius: 1px;
     margin-top: 3%;
     position: relative;
+    color: white;
 }
 
 .expect-user-name input {
+    font-size: 23px;
+    border: none;
+    margin: 15px;
+}
 
+.user {
+    text-align: center;
+    font-weight: bold;
+    color : #4080ff;
+    margin: 10px;
 }

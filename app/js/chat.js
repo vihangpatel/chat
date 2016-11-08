@@ -1,5 +1,5 @@
 $(document).ready(main);
-
+var username = '';
 var socket;
 
 function main() {
@@ -7,10 +7,16 @@ function main() {
 	bindIncomingMessage();
 	bindEventOnInputText();
 	bindSendClick();
+	bindUserNameChange();
+	bindUserChange();
 }
 
 function bindEventOnInputText(){
-	$('.chat-input-message input').keypress(onKeyPressOnInput)
+	$('.chat-input-message input').keypress(onKeyPressOnInput);
+}
+
+function bindUserNameChange(){
+	$('.expect-user-name input').keypress(onUserNameChange);
 }
 
 function onKeyPressOnInput(event){
@@ -51,4 +57,38 @@ function sendMessage(){
 
 function bindSendClick(){
 	$('.chat-hit-enter').click(sendMessage)
+}
+
+function onUserNameChange(event){
+	if(event.which == 13){
+		setUserName(event);
+	}
+}
+
+function setUserName(){
+	var name = $('.expect-user-name input').val();
+	socket.emit('newUser',{ username : name});
+	$('.modal').fadeOut();
+	username = name;
+	refreshUsers({ list: [username]} )	
+}
+
+window.addEventListener("beforeunload", function (e) {
+
+  socket.emit('remove',{username : username});
+  var confirmationMessage = "\o/";
+
+  (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+  return confirmationMessage;                            //Webkit, Safari, Chrome
+});
+
+function bindUserChange(){
+	socket.on('refreshUsers', refreshUsers);
+}
+
+function refreshUsers(data){
+	var list = data.list.map(function(user){
+		return '<div class="user">' + user + '</div>';
+	});
+	document.getElementById('online-people').innerHTML = list.join('');
 }

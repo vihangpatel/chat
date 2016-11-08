@@ -21,13 +21,35 @@ app.get('/',function(req,res){
  	res.sendFile('index.html')
 });
 
+var users = [];
+
 io.sockets.on('connection', function (socket) { // First connection
 	console.log('connection arrived');
 
 	socket.on('message',function(data){
 		socket.broadcast.emit('message', { message : data })
 	});
+
+	socket.on('newUser',function(data){
+		users.push(data.username);
+		socket.broadcast.emit('refreshUsers',{ list : users});
+	});
+
+	socket.on('remove',removeUser)
+
+	socket.on('disconnect',removeUser)
+
+	function removeUser(data){
+		users = users.filter(function(username){
+			return data.username != username;
+		});
+		console.log(users , ' ' , data);
+		socket.broadcast.emit('refreshUsers',{ list : users});
+	
+	}
 })
+
+
 
 // Listen on
 server.listen(appPort);
